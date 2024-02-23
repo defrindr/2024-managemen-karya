@@ -18,6 +18,7 @@ class BeritaFactory extends Factory
     public function definition(): array
     {
         $title = fake()->text();
+
         return [
             'judul' => $title,
             'slug' => \Illuminate\Support\Str::slug($title),

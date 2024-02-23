@@ -23,7 +23,7 @@ class SettingSeeder extends Seeder
                 'instagram' => '#',
                 'skype' => '#',
                 'linkedin' => '#',
-            ])
+            ]),
         ]);
     }
 }
