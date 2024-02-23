@@ -20,7 +20,7 @@ class Category extends Model
 
     public function getIconPath()
     {
-        return $this->getIconFolderPath() . $this->icon;
+        return $this->getIconFolderPath().$this->icon;
     }
 
     public function getUrlAttribute()

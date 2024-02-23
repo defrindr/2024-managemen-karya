@@ -39,9 +39,10 @@ class BeritaController extends Controller
         $payload = $request->validated();
 
         $response = RequestHelper::uploadImage($request->file('gambar'), 'berita');
-        if (!$response['success']) {
+        if (! $response['success']) {
             session()->flash('error', 'Gambar gagal diunggah');
             dd(1);
+
             return Redirect::route('admin.master.berita.create')->withInput();
         }
 
@@ -54,7 +55,7 @@ class BeritaController extends Controller
 
             return Redirect::route('admin.master.berita.show', $beritum);
         } catch (\Throwable $th) {
-            session()->flash('error', 'Terjadi kesalahan ketika menambahkan berita' . $th->getMessage());
+            session()->flash('error', 'Terjadi kesalahan ketika menambahkan berita'.$th->getMessage());
 
             return Redirect::route('admin.master.berita.create')->withInput();
         }
@@ -89,7 +90,7 @@ class BeritaController extends Controller
 
         if ($request->has('gambar')) {
             $response = RequestHelper::uploadImage($request->file('gambar'), 'berita');
-            if (!$response['success']) {
+            if (! $response['success']) {
                 session()->flash('error', 'Gambar gagal diunggah');
 
                 return Redirect::route('admin.master.berita.edit', compact('beritum'))->withInput();
@@ -105,7 +106,7 @@ class BeritaController extends Controller
 
             return Redirect::route('admin.master.berita.show', compact('beritum'));
         } catch (\Throwable $th) {
-            session()->flash('error', 'Terjadi kesalahan ketika mengubah berita' . $th->getMessage());
+            session()->flash('error', 'Terjadi kesalahan ketika mengubah berita'.$th->getMessage());
 
             return Redirect::route('admin.master.berita.edit', compact('beritum'))->withInput();
         }
@@ -123,7 +124,7 @@ class BeritaController extends Controller
 
             return Redirect::route('admin.master.berita.index');
         } catch (\Throwable $th) {
-            session()->flash('error', 'Terjadi kesalahan ketika menghapus berita' . $th->getMessage());
+            session()->flash('error', 'Terjadi kesalahan ketika menghapus berita'.$th->getMessage());
 
             return Redirect::back();
         }

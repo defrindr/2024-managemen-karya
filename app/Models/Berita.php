@@ -26,7 +26,7 @@ class Berita extends Model
 
     public function getSummaryAttribute()
     {
-        return strlen($this->konten) > 100 ? substr($this->konten, 0, 100) . "..." : $this->konten;
+        return strlen($this->konten) > 100 ? substr($this->konten, 0, 100).'...' : $this->konten;
     }
 
     public function getImageFolderPath()
@@ -36,7 +36,7 @@ class Berita extends Model
 
     public function getImagePath()
     {
-        return $this->getImageFolderPath() . $this->gambar;
+        return $this->getImageFolderPath().$this->gambar;
     }
 
     public function getImageUrlAttribute()

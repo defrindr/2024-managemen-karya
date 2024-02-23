@@ -25,9 +25,10 @@ class UpdateCategoryRequest extends FormRequest
 
         return [
             'gambar' => 'nullable|file|mimes:jpg,png,gif,jpeg',
-            'name' => 'required|unique:categories,name,' . $categoryId,
+            'name' => 'required|unique:categories,name,'.$categoryId,
         ];
     }
+
     public function attributes()
     {
         return ['icon' => 'Ikon', 'name' => 'Nama'];

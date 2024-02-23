@@ -68,6 +68,6 @@ class Team extends Model
             $members[] = "{$member->name}";
         }
 
-        return join(', ', $members);
+        return implode(', ', $members);
     }
 }

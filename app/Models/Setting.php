@@ -14,7 +14,6 @@ class Setting extends Model
         return json_decode($this->social_media) ?? [];
     }
 
-
     public function getBannerFolderPath()
     {
         return 'setting/';
@@ -22,12 +21,11 @@ class Setting extends Model
 
     public function getBannerPath()
     {
-        return $this->getBannerFolderPath() . $this->banner;
+        return $this->getBannerFolderPath().$this->banner;
     }
 
     public function getBannerUrlAttribute()
     {
         return asset($this->getBannerPath());
     }
-
 }

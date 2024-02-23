@@ -12,7 +12,9 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     const ROLE_ADMIN = 1;
+
     const ROLE_DOSEN = 2;
+
     const ROLE_MAHASISWA = 3;
 
     /**

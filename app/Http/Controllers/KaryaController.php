@@ -28,6 +28,7 @@ class KaryaController extends Controller
         }
 
         $items = $queryBuilder->paginate();
+
         return view('pages.admin.karya.index', compact('items', 'title'));
     }
 
@@ -41,7 +42,6 @@ class KaryaController extends Controller
         return view('pages.admin.karya.show', compact('karya', 'title'));
     }
 
-
     public function approve(Karya $karya)
     {
         try {
@@ -50,7 +50,7 @@ class KaryaController extends Controller
                 session()->flash('error', 'Anda tidak memiliki hak akses ini!');
 
                 return Redirect::route('admin.master.karya.index');
-            } else if ($karya->approve) {
+            } elseif ($karya->approve) {
                 session()->flash('error', 'Karya ini telah di approve!');
 
                 return Redirect::route('admin.master.karya.index');
@@ -62,7 +62,7 @@ class KaryaController extends Controller
 
             return Redirect::route('admin.master.karya.index');
         } catch (\Throwable $th) {
-            session()->flash('error', 'Gagal melakukan approving terhadap karya!' . $th->getMessage());
+            session()->flash('error', 'Gagal melakukan approving terhadap karya!'.$th->getMessage());
 
             return Redirect::route('admin.master.karya.index');
         }
@@ -76,11 +76,11 @@ class KaryaController extends Controller
                 session()->flash('error', 'Anda tidak memiliki hak akses ini!');
 
                 return Redirect::route('admin.master.karya.index');
-            } else if (!$karya->approved_by) {
+            } elseif (! $karya->approved_by) {
                 session()->flash('error', 'Karya ini belum di approve!');
 
                 return Redirect::route('admin.master.karya.index');
-            } else if ($karya->approved_by != $user->id) {
+            } elseif ($karya->approved_by != $user->id) {
                 session()->flash('error', 'Hanya orang yang melakukan approving yang dapat mengubah status karya ini lagi!');
 
                 return Redirect::route('admin.master.karya.index');

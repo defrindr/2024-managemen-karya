@@ -40,7 +40,7 @@ class CategoryController extends Controller
             $payload = $request->validated();
 
             $response = RequestHelper::uploadImage($request->file('icon'), 'categories');
-            if (!$response['success']) {
+            if (! $response['success']) {
                 session()->flash('error', 'Ikon gagal diunggah');
 
                 return Redirect::route('admin.master.category.create')->withInput();
@@ -78,7 +78,7 @@ class CategoryController extends Controller
 
             if ($request->has('icon')) {
                 $response = RequestHelper::uploadImage($request->file('icon'), 'categories');
-                if (!$response['success']) {
+                if (! $response['success']) {
                     session()->flash('error', 'Ikon gagal diunggah');
 
                     return Redirect::route('admin.master.category.create')->withInput();

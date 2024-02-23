@@ -24,7 +24,7 @@ class StoreBeritaRequest extends FormRequest
         return [
             'judul' => 'required|min:5',
             'gambar' => 'required|file|mimes:jpg,png,gif,jpeg',
-            'konten' => 'required'
+            'konten' => 'required',
         ];
     }
 
@@ -33,7 +33,7 @@ class StoreBeritaRequest extends FormRequest
         return [
             'required' => ':attribute harus diisi',
             'min' => ':attribute setidaknya harus mempunyai panjang :min karakter',
-            'file' => ':attribute harus berupa file gambar'
+            'file' => ':attribute harus berupa file gambar',
         ];
     }
 }

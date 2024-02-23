@@ -39,7 +39,7 @@ class Karya extends Model
 
     public function getSummaryAttribute()
     {
-        return strlen($this->deskripsi) > 100 ? substr($this->deskripsi, 0, 100) . "..." : $this->deskripsi;
+        return strlen($this->deskripsi) > 100 ? substr($this->deskripsi, 0, 100).'...' : $this->deskripsi;
     }
 
     public function getImageFolderPath()
@@ -49,7 +49,7 @@ class Karya extends Model
 
     public function getImagePath()
     {
-        return $this->getImageFolderPath() . $this->gambar;
+        return $this->getImageFolderPath().$this->gambar;
     }
 
     public function getImageUrlAttribute()
