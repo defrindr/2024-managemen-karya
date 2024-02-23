@@ -1,16 +1,13 @@
-# Decision Tree Study Kasus Pembelian Laptop
+# Management Karya Polinema
 
 ## Resources
-
--   [Datasheet](https://github.com/37Degrees/DataSets/blob/master/laptops.csv)
--   [Modifikasi Decision Tree](./documentation/modify-classification.md)
 
 ## Deploy
 
 1. Clone this repository
 
 ```sh
-git clone https://github.com/defrindr/2023-penjualan-laptop.git
+git clone https://github.com/defrindr/2023-management-karya-polinema-nelsa.git
 ```
 
 2. Install dependecies

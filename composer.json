@@ -20,19 +20,29 @@
         "symfony/postmark-mailer": "^6.1"
     },
     "require-dev": {
+        "cweagans/composer-patches": "^1.7",
         "fzaninotto/faker": "^1.4",
         "laravel/pint": "^1.13",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "symplify/vendor-patches": "^11.3"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "cweagans/composer-patches": true
+        }
     },
     "extra": {
+        "patches": {
+            "fzaninotto/faker": [
+                "patches/fzaninotto-faker-src-faker-provider-lorem-php.patch"
+            ]
+        },
         "laravel": {
             "dont-discover": []
         }
@@ -42,7 +52,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/FunctionHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

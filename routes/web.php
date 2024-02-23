@@ -14,26 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/classification', 'ClassificationController@index')->name('classification.view');
-Route::post('/classification/analyst', 'ClassificationController@analyst')->name('classification.analyst');
-
-Route::get('/filter', 'ClassificationController@filter')->name('filter.view');
-Route::post('/filter/analyst', 'ClassificationController@filterAnalyst')->name('filter.analyst');
+Route::get('/', 'AppController@index')->name('index');
+Route::get('/karya/{karya}', 'AppController@karyaShow')->name('karya.detail');
+Route::get('/karya', 'AppController@karya')->name('karya');
+Route::get('/berita/{berita}', 'AppController@beritaShow')->name('berita.detail');
+Route::get('/berita', 'AppController@berita')->name('berita');
 
 Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
 
-Route::name('admin.')->group(function () {
+Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
     // data master
-    Route::get('/tool/up', 'ToolController@up')->name('tool.up');
+    // Route::get('/tool/up', 'ToolController@up')->name('tool.up');
     Route::name('master.')->group(function () {
-        Route::resource('laptop', 'LaptopController');
+        Route::resource('category', 'CategoryController');
+        Route::resource('berita', 'BeritaController');
+
+        Route::resource('team', 'TeamController');
+
+        Route::post('/team/cari-pengguna', 'TeamController@cariPengguna')->name('team.search');
+
+        Route::post('/team/{team}/approve', 'TeamController@approve')->name('team.approve');
+        Route::post('/team/{team}/reject', 'TeamController@reject')->name('team.reject');
+
+        Route::get('/team/{team}/member/create', 'TeamController@createMember')->name('team.member.create');
+        Route::post('/team/{team}/member/create', 'TeamController@storeMember')->name('team.member.store');
+        Route::delete('/team/{team}/member/{member}', 'TeamController@destroyMember')->name('team.member.destroy');
+
+        Route::resource('team.karya', 'Team\KaryaController');
+        Route::resource('karya', 'KaryaController')->only(['index', 'show']);
+        Route::post('/karya/{karya}/approve', 'KaryaController@approve')->name('karya.approve');
+        Route::post('/karya/{karya}/reject', 'KaryaController@reject')->name('karya.reject');
     });
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Kategori Karya';
+        $items = Category::orderBy('id', 'desc')->paginate();
+
+        return view('pages.admin.category.index', compact('title', 'items'));
     }
 
     /**
@@ -21,7 +25,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Tambah Kategori Karya';
+
+        return view('pages.admin.category.create', compact('title'));
     }
 
     /**
@@ -29,15 +35,16 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
-    }
+        try {
+            Category::create($request->validated());
+            session()->flash('success', 'Berhasil menambahkan kategori karya!');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
+            return Redirect::route('admin.master.category.index');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Gagal menambahkan data!');
+
+            return Redirect::route('admin.master.category.create')->withInput();
+        }
     }
 
     /**
@@ -45,7 +52,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $title = 'Ubah Kategori Karya';
+
+        return view('pages.admin.category.edit', compact('title', 'category'));
     }
 
     /**
@@ -53,7 +62,16 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        try {
+            $category->update($request->validated());
+            session()->flash('success', 'Berhasil mengubah kategori karya!');
+
+            return Redirect::route('admin.master.category.index');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Gagal menambahkan data!');
+
+            return Redirect::route('admin.master.category.create')->withInput();
+        }
     }
 
     /**
@@ -61,6 +79,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+            session()->flash('success', 'Kategori berhasil dihapus!');
+
+            return Redirect::route('admin.master.category.index');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Gagal menghapus data!');
+
+            return Redirect::route('admin.master.category.index');
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -12,6 +12,8 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Category::create(['icon' => '1.png', 'name' => 'Teknologi Informasi']);
+        Category::create(['icon' => '1.png', 'name' => 'Pangan']);
+        Category::create(['icon' => '1.png', 'name' => 'Otomotif']);
     }
 }

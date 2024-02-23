@@ -1,0 +1,116 @@
+--- /dev/null
++++ ../src/Faker/Provider/Lorem.php
+@@ -6,7 +6,7 @@
+ {
+     protected static $wordList = array(
+         'alias', 'consequatur', 'aut', 'perferendis', 'sit', 'voluptatem',
+-        'accusantium', 'doloremque', 'aperiam', 'eaque','ipsa', 'quae', 'ab',
++        'accusantium', 'doloremque', 'aperiam', 'eaque', 'ipsa', 'quae', 'ab',
+         'illo', 'inventore', 'veritatis', 'et', 'quasi', 'architecto',
+         'beatae', 'vitae', 'dicta', 'sunt', 'explicabo', 'aspernatur', 'aut',
+         'odit', 'aut', 'fugit', 'sed', 'quia', 'consequuntur', 'magni',
+@@ -64,8 +64,8 @@
+     public static function words($nb = 3, $asText = false)
+     {
+         $words = array();
+-        for ($i=0; $i < $nb; $i++) {
+-            $words []= static::word();
++        for ($i = 0; $i < $nb; $i++) {
++            $words[] = static::word();
+         }
+ 
+         return $asText ? join(' ', $words) : $words;
+@@ -92,7 +92,7 @@
+         $words = static::words($nbWords);
+         $words[0] = ucwords($words[0]);
+ 
+-        return join(' ',$words) . '.';
++        return join(' ', $words) . '.';
+     }
+ 
+     /**
+@@ -106,8 +106,8 @@
+     public static function sentences($nb = 3, $asText = false)
+     {
+         $sentences = array();
+-        for ($i=0; $i < $nb; $i++) {
+-            $sentences []= static::sentence();
++        for ($i = 0; $i < $nb; $i++) {
++            $sentences[] = static::sentence();
+         }
+ 
+         return $asText ? join(' ', $sentences) : $sentences;
+@@ -116,7 +116,7 @@
+     /**
+      * Generate a single paragraph
+      *
+-      * @example 'Sapiente sunt omnis. Ut pariatur ad autem ducimus et. Voluptas rem voluptas sint modi dolorem amet.'
++     * @example 'Sapiente sunt omnis. Ut pariatur ad autem ducimus et. Voluptas rem voluptas sint modi dolorem amet.'
+      * @param integer $nbSentences         around how many sentences the paragraph should contain
+      * @param boolean $variableNbSentences set to false if you want exactly $nbSentences returned,
+      *                                      otherwise $nbSentences may vary by +/-40% with a minimum of 1
+@@ -131,7 +131,7 @@
+             $nbSentences = self::randomizeNbElements($nbSentences);
+         }
+ 
+-        return join(static::sentences($nbSentences), ' ');
++        return join(' ', static::sentences($nbSentences));
+     }
+ 
+     /**
+@@ -145,8 +145,8 @@
+     public static function paragraphs($nb = 3, $asText = false)
+     {
+         $paragraphs = array();
+-        for ($i=0; $i < $nb; $i++) {
+-            $paragraphs []= static::paragraph();
++        for ($i = 0; $i < $nb; $i++) {
++            $paragraphs[] = static::paragraph();
+         }
+ 
+         return $asText ? join("\n\n", $paragraphs) : $paragraphs;
+@@ -156,7 +156,7 @@
+      * Generate a text string.
+      * Depending on the $maxNbChars, returns a string made of words, sentences, or paragraphs.
+      *
+-      * @example 'Sapiente sunt omnis. Ut pariatur ad autem ducimus et. Voluptas rem voluptas sint modi dolorem amet.'
++     * @example 'Sapiente sunt omnis. Ut pariatur ad autem ducimus et. Voluptas rem voluptas sint modi dolorem amet.'
+      * @param  integer $maxNbChars Maximum number of characters the text should contain (minimum 5)
+      * @return string
+      */
+@@ -172,7 +172,7 @@
+                 // determine how many words are needed to reach the $maxNbChars once;
+                 while ($size < $maxNbChars) {
+                     $word = ($size ? ' ' : '') . static::word();
+-                    $text []= $word;
++                    $text[] = $word;
+                     $size += strlen($word);
+                 }
+                 array_pop($text);
+@@ -186,7 +186,7 @@
+                 // determine how many sentences are needed to reach the $maxNbChars once;
+                 while ($size < $maxNbChars) {
+                     $sentence = ($size ? ' ' : '') . static::sentence();
+-                    $text []= $sentence;
++                    $text[] = $sentence;
+                     $size += strlen($sentence);
+                 }
+                 array_pop($text);
+@@ -198,7 +198,7 @@
+                 // determine how many paragraphs are needed to reach the $maxNbChars once;
+                 while ($size < $maxNbChars) {
+                     $paragraph = ($size ? "\n" : '') . static::paragraph();
+-                    $text []= $paragraph;
++                    $text[] = $paragraph;
+                     $size += strlen($paragraph);
+                 }
+                 array_pop($text);
+@@ -205,7 +205,7 @@
+             }
+         }
+ 
+-        return join($text, '');
++        return join('', $text);
+     }
+ 
+     protected static function randomizeNbElements($nbElements)

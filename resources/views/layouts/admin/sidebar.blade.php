@@ -24,14 +24,36 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        {{ __('Master Data') }}
+        {{ __('Data Master') }}
     </div>
 
     <!-- Nav Item - Profile -->
-    <li class="nav-item {{ Nav::isRoute('admin.master.laptop.index') }}">
-        <a class="nav-link" href="{{ route('admin.master.laptop.index') }}">
-            <i class="fas fa-fw fa-laptop"></i>
-            <span>{{ __('Laptop') }}</span>
+    @if (Auth::user()->role_id != \App\Models\User::ROLE_MAHASISWA)
+        <li class="nav-item {{ Nav::isRoute('admin.master.category.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.category.index') }}">
+                <i class="fas fa-fw fa-database"></i>
+                <span>{{ __('Kategori') }}</span>
+            </a>
+        </li>
+    @endif
+    <li class="nav-item {{ Nav::isRoute('admin.master.team.index') }}">
+        <a class="nav-link" href="{{ route('admin.master.team.index') }}">
+            <i class="fas fa-fw fa-database"></i>
+            <span>{{ __('Tim Saya') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{ Nav::isRoute('admin.master.karya.index') }}">
+        <a class="nav-link" href="{{ route('admin.master.karya.index') }}">
+            <i class="fas fa-fw fa-paperclip"></i>
+            <span>{{ __('Karya') }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{ Nav::isRoute('admin.master.berita.index') }}">
+        <a class="nav-link" href="{{ route('admin.master.berita.index') }}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>{{ __('Berita') }}</span>
         </a>
     </li>
 
@@ -39,20 +61,20 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    {{-- <div class="sidebar-heading">
         {{ __('Settings') }}
-    </div>
+    </div> --}}
 
     <!-- Nav Item - Profile -->
-    <li class="nav-item {{ Nav::isRoute('admin.profile') }}">
+    {{-- <li class="nav-item {{ Nav::isRoute('admin.profile') }}">
         <a class="nav-link" href="{{ route('admin.profile') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('Profile') }}</span>
         </a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
