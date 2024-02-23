@@ -7,7 +7,7 @@
 1. Clone this repository
 
 ```sh
-git clone https://github.com/defrindr/2023-management-karya-polinema-nelsa.git
+git clone https://github.com/defrindr/managemen-karya-2024.git
 ```
 
 2. Install dependecies
