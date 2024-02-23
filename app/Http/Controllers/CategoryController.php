@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\RequestHelper;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
@@ -36,7 +37,17 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         try {
-            Category::create($request->validated());
+            $payload = $request->validated();
+
+            $response = RequestHelper::uploadImage($request->file('icon'), 'categories');
+            if (!$response['success']) {
+                session()->flash('error', 'Ikon gagal diunggah');
+
+                return Redirect::route('admin.master.category.create')->withInput();
+            }
+            $payload['icon'] = $response['fileName'];
+
+            Category::create($payload);
             session()->flash('success', 'Berhasil menambahkan kategori karya!');
 
             return Redirect::route('admin.master.category.index');
@@ -63,7 +74,21 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         try {
-            $category->update($request->validated());
+            $payload = $request->validated();
+
+            if ($request->has('icon')) {
+                $response = RequestHelper::uploadImage($request->file('icon'), 'categories');
+                if (!$response['success']) {
+                    session()->flash('error', 'Ikon gagal diunggah');
+
+                    return Redirect::route('admin.master.category.create')->withInput();
+                }
+                $payload['icon'] = $response['fileName'];
+            } else {
+                $payload['icon'] = $category->icon;
+            }
+
+            $category->update($payload);
             session()->flash('success', 'Berhasil mengubah kategori karya!');
 
             return Redirect::route('admin.master.category.index');

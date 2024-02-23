@@ -18,6 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Ikon</th>
                                     <th>Nama</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -32,6 +33,10 @@
                                     <tr>
                                         <td>
                                             {{ ($items->currentpage() - 1) * $items->perpage() + $loop->index + 1 }}
+                                        </td>
+                                        <td>
+                                            <img src="{{ $category->url }}" alt="" class="img img-fluid"
+                                                style="max-width:100px;max-height:100px">
                                         </td>
                                         <td>{{ $category->name }}</td>
                                         <td>

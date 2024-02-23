@@ -22,7 +22,23 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'icon' => 'required|file|mimes:jpg,png,gif,jpeg',
             'name' => 'required|unique:categories,name',
+        ];
+    }
+
+    public function attributes()
+    {
+        return ['icon' => 'Ikon', 'name' => 'Nama'];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute harus diisi',
+            'min' => ':attribute setidaknya harus mempunyai panjang :min karakter',
+            'file' => ':attribute harus berupa file gambar',
+            'url' => ':attribute harus berupa url valid',
         ];
     }
 }

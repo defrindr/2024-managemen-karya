@@ -22,7 +22,7 @@ class AppController extends Controller
     $listKategori = Category::get();
     $filterKarya = Category::get();
     $listKarya = Karya::limit(9)->orderBy('id', 'desc')->get();
-    $listBerita = Berita::limit(6)->get();
+    $listBerita = Berita::orderBy('id', 'desc')->limit(6)->get();
 
     return view('pages.guest.index', compact('appName', 'appBanner', 'listKategori', 'filterKarya', 'listKarya', 'socialMedias', 'listBerita', 'appDescription'));
   }
@@ -35,7 +35,7 @@ class AppController extends Controller
 
     $listKategori = Category::get();
 
-    $qb = Karya::query();
+    $qb = Karya::query()->orderBy('id', 'desc');
 
     if ($request->has('kategori')) {
       $qb->where('category_id', $request->kategori);
@@ -62,7 +62,7 @@ class AppController extends Controller
     $appName = $setting->judul ?? config('app.name');
     $socialMedias = $setting->socialMedias;
 
-    $listBerita = Berita::paginate();
+    $listBerita = Berita::orderBy('id', 'desc')->paginate();
 
     return view('pages.guest.berita', compact('appName', 'socialMedias', 'listBerita'));
   }
@@ -75,6 +75,4 @@ class AppController extends Controller
 
     return view('pages.guest.berita-show', compact('appName', 'socialMedias', 'berita'));
   }
-
-
 }
