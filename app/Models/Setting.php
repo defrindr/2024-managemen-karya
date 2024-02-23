@@ -9,6 +9,10 @@ class Setting extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'judul', 'banner', 'deskripsi', 'informasi_kontak', 'social_media'
+    ];
+
     public function getSocialMediasAttribute()
     {
         return json_decode($this->social_media) ?? [];
@@ -21,7 +25,7 @@ class Setting extends Model
 
     public function getBannerPath()
     {
-        return $this->getBannerFolderPath().$this->banner;
+        return $this->getBannerFolderPath() . $this->banner;
     }
 
     public function getBannerUrlAttribute()

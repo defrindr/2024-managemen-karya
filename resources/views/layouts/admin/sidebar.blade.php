@@ -28,6 +28,20 @@
     </div>
 
     <!-- Nav Item - Profile -->
+    @if (Auth::user()->role_id == App\Models\User::ROLE_ADMIN)
+        <li class="nav-item {{ Nav::isRoute('admin.master.setting.edit') }}">
+            <a class="nav-link" href="{{ route('admin.master.setting.edit') }}">
+                <i class="fas fa-fw fa-gear"></i>
+                <span>{{ __('Pengaturan') }}</span>
+            </a>
+        </li>
+        <li class="nav-item {{ Nav::isRoute('admin.master.berita.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.berita.index') }}">
+                <i class="fas fa-fw fa-newspaper"></i>
+                <span>{{ __('Berita') }}</span>
+            </a>
+        </li>
+    @endif
     @if (Auth::user()->role_id != \App\Models\User::ROLE_MAHASISWA)
         <li class="nav-item {{ Nav::isRoute('admin.master.category.index') }}">
             <a class="nav-link" href="{{ route('admin.master.category.index') }}">
@@ -47,13 +61,6 @@
         <a class="nav-link" href="{{ route('admin.master.karya.index') }}">
             <i class="fas fa-fw fa-paperclip"></i>
             <span>{{ __('Karya') }}</span>
-        </a>
-    </li>
-
-    <li class="nav-item {{ Nav::isRoute('admin.master.berita.index') }}">
-        <a class="nav-link" href="{{ route('admin.master.berita.index') }}">
-            <i class="fas fa-fw fa-newspaper"></i>
-            <span>{{ __('Berita') }}</span>
         </a>
     </li>
 

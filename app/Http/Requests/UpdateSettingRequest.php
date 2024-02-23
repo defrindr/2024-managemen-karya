@@ -11,7 +11,7 @@ class UpdateSettingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateSettingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'informasi_kontak' => 'required',
+            'banner' => 'nullable|file|mimes:jpg,png,gif,jpeg',
+            'social_media.twitter' => 'required',
+            'social_media.facebook' => 'required',
+            'social_media.twitter' => 'required',
+            'social_media.instagram' => 'required',
+            'social_media.skype' => 'required',
+            'social_media.linkedin' => 'required',
         ];
     }
 }

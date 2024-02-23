@@ -48,5 +48,8 @@ Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
         Route::resource('karya', 'KaryaController')->only(['index', 'show']);
         Route::post('/karya/{karya}/approve', 'KaryaController@approve')->name('karya.approve');
         Route::post('/karya/{karya}/reject', 'KaryaController@reject')->name('karya.reject');
+
+        Route::get('/setting', 'SettingController@edit')->name('setting.edit');
+        Route::put('/setting', 'SettingController@update')->name('setting.update');
     });
 });
