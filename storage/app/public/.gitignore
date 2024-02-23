@@ -1,2 +1,6 @@
 *
 !.gitignore
+!berita/
+!categories/
+!karya/
+!setting/
