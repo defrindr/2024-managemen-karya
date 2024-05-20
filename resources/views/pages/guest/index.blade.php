@@ -95,7 +95,8 @@
                 @foreach ($listKategori as $kategori)
                     <div class="col-md-3">
                         <div class="category">
-                            <img src="{{ $kategori->url }}" alt="{{ $kategori->name }}" class="img img-fluid category-icon">
+                            <img src="{{ 'storage/' . $kategori->url }}" alt="{{ $kategori->name }}"
+                                class="img img-fluid category-icon">
                             <span class="category-title">
                                 {{ $kategori->name }}
                             </span>
@@ -179,7 +180,7 @@
                                     style="font-size: .7rem;color:#aeaeae">{{ indonesian_date($berita->created_at) }}</span>
                                 <h5 class="card-title">{{ $berita->judul }}</h5>
                                 <p class="card-text">{{ $berita->summary }}</p>
-                                <a href="/app/detail/2022-02-03-pengumpulan-proposal-pmw-pens-2022-1tene"
+                                <a href="{{ route('berita.detail', compact('berita')) }}"
                                     class="btn btn-primary blue">Lainnya</a>
                             </div>
                         </div>

@@ -24,6 +24,12 @@ composer install
 php artisan key:generate
 ```
 
+4. Link Storage
+
+```sh
+php artisan storage:link
+```
+
 5. Running migration
 
 ```sh

@@ -31,7 +31,7 @@
                             <a href="{{ route('karya.detail', $item) }}">
                                 <div class="box box-default">
                                     <div class="box-image hover-cover"
-                                        style="background-image: url({{ $item->gambarUrl }}); background-size:contain;background-repeat:no-repeat;background-color: #fff;transition: 1s;background-position: center">
+                                        style="background-image: url({{ $item->imageUrl }}); background-size:contain;background-repeat:no-repeat;background-color: #fff;transition: 1s;background-position: center">
                                     </div>
                                     <div class="box-info">
                                         <span class="title">{{ $item->judul }}</span>

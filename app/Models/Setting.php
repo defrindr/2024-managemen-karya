@@ -25,7 +25,7 @@ class Setting extends Model
 
     public function getBannerPath()
     {
-        return $this->getBannerFolderPath() . $this->banner;
+        return $this->getBannerFolderPath() . str_replace(" ", "%20", $this->banner);
     }
 
     public function getBannerUrlAttribute()

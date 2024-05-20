@@ -15,7 +15,7 @@ class AppController extends Controller
         $setting = Setting::first();
         $appName = $setting->judul ?? config('app.name');
         $appDescription = $setting->deskripsi ?? '';
-        $appBanner = $setting->bannerUrl;
+        $appBanner = "storage/" . $setting->bannerUrl;
         $socialMedias = $setting->socialMedias;
 
         $listKategori = Category::get();
