@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username')->min(5)->unique();
             $table->string('name');
             $table->string('password');
+            $table->tinyInteger('status')->default(0);
             $table->foreignId('role_id')->references('id')->on('roles');
             $table->rememberToken();
             $table->timestamps();

@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'administrator',
             'password' => 'password',
             'role_id' => 1,
+            'status' => 1
         ]);
 
         \App\Models\User::factory(50)->create();

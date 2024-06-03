@@ -14,6 +14,8 @@
                         href="{{ route('karya') }}">Karya</a></li>
                 <li><a class="nav-link @if (Route::currentRouteName() == 'berita') active @endif"
                         href="{{ route('berita') }}">Berita</a></li>
+                <li><a class="nav-link @if (Route::currentRouteName() == 'login') active @endif"
+                        href="{{ route('login') }}">Login</a></li>
                 {{-- <li><a class="nav-link" href="#contact">Kontak Kami</a></li> --}}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

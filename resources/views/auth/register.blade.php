@@ -11,7 +11,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">{{ __('Daftar Sekarang') }}</h1>
                                     </div>
 
                                     @if ($errors->any())
@@ -24,13 +24,19 @@
                                         </div>
                                     @endif
 
-                                    <form method="POST" action="{{ route('login') }}" class="user">
+                                    <form method="POST" action="{{ route('register') }}" class="user">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <div class="form-group">
+                                            <input type="name" class="form-control form-control-user" name="name"
+                                                placeholder="{{ __('Name') }}" value="{{ old('name') }}" required
+                                                autofocus>
+                                        </div>
+
+                                        <div class="form-group">
                                             <input type="username" class="form-control form-control-user" name="username"
-                                                placeholder="{{ __('Username / NRP') }}" value="{{ old('username') }}"
-                                                required autofocus>
+                                                placeholder="{{ __('NRP') }}" value="{{ old('username') }}" required
+                                                autofocus>
                                         </div>
 
                                         <div class="form-group">

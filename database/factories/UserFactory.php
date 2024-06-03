@@ -20,6 +20,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'username' => fake()->unique()->safeEmail(),
             'password' => 'password',
+            'status' => 1,
             'role_id' => fake()->numberBetween(2, 3),
         ];
     }

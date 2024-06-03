@@ -41,6 +41,12 @@
                 <span>{{ __('Berita') }}</span>
             </a>
         </li>
+        <li class="nav-item {{ Nav::isRoute('admin.master.user.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.user.index') }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>{{ __('Pengguna') }}</span>
+            </a>
+        </li>
     @endif
     @if (Auth::user()->role_id != \App\Models\User::ROLE_MAHASISWA)
         <li class="nav-item {{ Nav::isRoute('admin.master.category.index') }}">

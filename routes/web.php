@@ -20,7 +20,7 @@ Route::get('/karya', 'AppController@karya')->name('karya');
 Route::get('/berita/{berita}', 'AppController@beritaShow')->name('berita.detail');
 Route::get('/berita', 'AppController@berita')->name('berita');
 
-Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
+Auth::routes(['reset' => false, 'confirm' => false]);
 
 Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -32,6 +32,7 @@ Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
     Route::name('master.')->group(function () {
         Route::resource('category', 'CategoryController');
         Route::resource('berita', 'BeritaController');
+        Route::resource('user', 'UserController')->except(['show']);
 
         Route::resource('team', 'TeamController');
 
