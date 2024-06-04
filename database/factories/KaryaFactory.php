@@ -19,11 +19,16 @@ class KaryaFactory extends Factory
      */
     public function definition(): array
     {
+        $basePath = base_path() . "/storage/app/public/karya/";
+        $listGambar = glob($basePath);
+
+        $randImage = $listGambar[random_int(0, count($listGambar) - 1)];
+
         return [
             'category_id' => Category::inRandomOrder()->first()->id,
             'team_id' => Team::inRandomOrder()->first()->id,
             'judul' => fake()->title,
-            'gambar' => 'demo.jpeg',
+            'gambar' => str_replace($basePath, "", $randImage),
             'deskripsi' => fake()->realText(),
             'link_youtube' => 'https://www.youtube.com/watch?v=QZTkb69D64E',
             'created_by' => User::inRandomOrder()->first()->id,
