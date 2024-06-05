@@ -17,9 +17,10 @@
             </div>
 
             <div class="d-flex category_faq text-center justify-content-center">
-                <a href="{{ route('karya') }}" class="selected">Semua</a>
+                <a href="{{ route('karya') }}" class="{{ request()->get('kategori') == null ? 'selected' : '' }}">Semua</a>
                 @foreach ($listKategori as $kategori)
-                    <a href="{{ route('karya', ['kategori' => $kategori->id]) }}">{{ $kategori->name }}</a>
+                    <a href="{{ route('karya', ['kategori' => $kategori->id]) }}"
+                        class="{{ request()->get('kategori') == $kategori->id ? 'selected' : '' }}">{{ $kategori->name }}</a>
                 @endforeach
             </div>
 
