@@ -82,7 +82,9 @@
         }
 
         #hero {
-            background: url('{!! $appBanner !!}')
+            background: url('{!! $appBanner !!}');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
     </style>
 @endsection
@@ -131,7 +133,7 @@
             <div class="row portfolio-container">
                 @foreach ($listKarya as $karya)
                     <div class="col-md-4 col-sm-6 portfolio-item filter-{{ $karya->category->slug }}">
-                        <a href="#">
+                        <a href="{{ route('karya.detail', $karya) }}">
                             <div class="text-center flex-1" style="height:210px">
                                 <img src="{!! $karya->imageUrl !!}" class="img img-fluid" alt="{{ $karya->judul }}">
                                 <div class="portfolio-info">
