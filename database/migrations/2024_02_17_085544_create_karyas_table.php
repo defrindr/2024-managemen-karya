@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('gambar');
             $table->string('deskripsi');
-            $table->string('link_youtube');
+            $table->string('link_youtube')->nullable();
 
             $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('approved_by')->nullable()->references('id')->on('users');

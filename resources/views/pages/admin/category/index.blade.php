@@ -35,7 +35,7 @@
                                             {{ ($items->currentpage() - 1) * $items->perpage() + $loop->index + 1 }}
                                         </td>
                                         <td>
-                                            <img src="{{ $category->url }}" alt="" class="img img-fluid"
+                                            <img src="{{ $category->getIconPath() }}" alt="" class="img img-fluid"
                                                 style="max-width:100px;max-height:100px">
                                         </td>
                                         <td>{{ $category->name }}</td>

@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'AppController@index')->name('index');
+Route::post('/', function () {
+    return redirect('/');
+})->name('index-post');
 Route::get('/karya/{karya}', 'AppController@karyaShow')->name('karya.detail');
 Route::get('/karya', 'AppController@karya')->name('karya');
 Route::get('/berita/{berita}', 'AppController@beritaShow')->name('berita.detail');

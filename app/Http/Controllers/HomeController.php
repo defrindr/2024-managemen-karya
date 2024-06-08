@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karya;
+use App\Models\Team;
+use App\Models\User;
+
 class HomeController extends Controller
 {
     /**
@@ -22,6 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $widget = [
+            'students' => User::where('role_id', User::ROLE_MAHASISWA)->count(),
+            'approvedWork' => Karya::whereNotNull('approved_by')->count(),
+            'notApprovedWork' => karya::whereNull('approved_by')->count(),
+            'teams' => Team::count(),
             // 'users' => $users,
             // 'laptops' => $laptops,
             //...

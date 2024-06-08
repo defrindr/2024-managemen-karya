@@ -32,6 +32,7 @@
                     <h4>Berlangganan konten kami</h4>
                     <p>Langganan agar tidak ketinggalan dengan konten terbaru dari kami</p>
                     <form action="" method="post">
+                        @csrf
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
                 </div>

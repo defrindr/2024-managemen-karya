@@ -27,7 +27,7 @@ class KaryaFactory extends Factory
         return [
             'category_id' => Category::inRandomOrder()->first()->id,
             'team_id' => Team::inRandomOrder()->first()->id,
-            'judul' => fake()->title,
+            'judul' => fake()->text(),
             'gambar' => str_replace($basePath, "", $randImage),
             'deskripsi' => fake()->realText(),
             'link_youtube' => 'https://www.youtube.com/watch?v=QZTkb69D64E',

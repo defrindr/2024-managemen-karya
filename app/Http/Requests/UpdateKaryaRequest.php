@@ -26,7 +26,7 @@ class UpdateKaryaRequest extends FormRequest
             'judul' => 'required|min:5',
             'gambar' => 'nullable|file|mimes:jpg,png,gif,jpeg',
             'deskripsi' => 'required',
-            'link_youtube' => 'required|url',
+            'link_youtube' => 'nullable|url',
         ];
     }
 

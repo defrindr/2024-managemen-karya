@@ -74,7 +74,7 @@
         }
 
         .category:hover .category-icon {
-            filter: brightness(0) invert(1);
+            /* filter: brightness(0) invert(1); */
         }
 
         .category:hover .category-title {
@@ -97,7 +97,7 @@
                 @foreach ($listKategori as $kategori)
                     <div class="col-md-3">
                         <div class="category">
-                            <img src="{{ 'storage/' . $kategori->url }}" alt="{{ $kategori->name }}"
+                            <img src="{{ $kategori->getIconPath() }}" alt="{{ $kategori->name }}"
                                 class="img img-fluid category-icon">
                             <span class="category-title">
                                 {{ $kategori->name }}

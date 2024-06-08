@@ -19,6 +19,8 @@ class KaryaController extends Controller
 
         $queryBuilder = Karya::query();
 
+        $queryBuilder->orderBy('created_at', 'desc');
+
         $user = auth()->user();
         $userId = $user->id;
         $roleId = $user->role_id;
@@ -62,7 +64,7 @@ class KaryaController extends Controller
 
             return Redirect::route('admin.master.karya.index');
         } catch (\Throwable $th) {
-            session()->flash('error', 'Gagal melakukan approving terhadap karya!'.$th->getMessage());
+            session()->flash('error', 'Gagal melakukan approving terhadap karya!' . $th->getMessage());
 
             return Redirect::route('admin.master.karya.index');
         }
@@ -76,7 +78,7 @@ class KaryaController extends Controller
                 session()->flash('error', 'Anda tidak memiliki hak akses ini!');
 
                 return Redirect::route('admin.master.karya.index');
-            } elseif (! $karya->approved_by) {
+            } elseif (!$karya->approved_by) {
                 session()->flash('error', 'Karya ini belum di approve!');
 
                 return Redirect::route('admin.master.karya.index');

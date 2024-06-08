@@ -24,7 +24,7 @@
                     <div class="col-md-3 mb-2">
                         <a href="{{ $karya->imageUrl }}" target="_blank">
                             <img src="{{ $karya->imageUrl }}" alt="{{ $karya->judul }}" class="img img-fluid"
-                                style="max-width: 350px; max-height:350px;display:block;margin:auto">
+                                style="display:block;margin:auto">
                         </a>
                     </div>
                     <div class="col-md-9 mb-2">
@@ -40,6 +40,17 @@
                                     <td>:</td>
                                     <td>{!! $karya->team->memberText !!}</td>
                                 </tr>
+                                @if ($karya->link_youtube)
+                                    <tr>
+                                        <td>Youtube</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a href="{!! $karya->link_youtube !!}" target="_blank">
+                                                Kunjungi
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                         <div style="text-align: justify">
