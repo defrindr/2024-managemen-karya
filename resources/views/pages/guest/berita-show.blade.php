@@ -20,7 +20,7 @@
 
             <div id="content">
                 <div class="row">
-                    <div class="col-md-12 text-center mb-4">
+                    <div class="col-md-12 mb-4">
                         <img src="{{ $berita->imageUrl }}" alt="" class="img img-fluid d-block m-auto"
                             style="max-height: 450px;max-width:450px">
                         <div class="mb-3"></div>
