@@ -75,6 +75,9 @@
             .then(newEditor => {
                 editor = newEditor;
                 editor.data.set(`{!! old('konten') ?? $beritum->konten !!}`);
+
+                $('.ck.ck-button.ck-off.ck-file-dialog-button').hide();
+                $('.ck.ck-button.ck-off.ck-dropdown__button').hide();
             })
             .catch(error => {
                 console.error('ErrorBro', error);

@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-default">
-                <form action="{{ route('admin.master.team.karya.update', compact('team', 'karya')) }}" class="form" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.master.team.karya.update', compact('team', 'karya')) }}" class="form"
+                    method="post" enctype="multipart/form-data">
                     <div class="card-header">
                         <a href="{{ url()->previous() }}" class="btn btn-default">
                             <i class="fa fa-chevron-left"></i> {{ __('Kembali') }}
@@ -98,6 +98,10 @@
             .then(newEditor => {
                 editor = newEditor;
                 editor.data.set(`{!! $karya->deskripsi !!}`);
+
+
+                $('.ck.ck-button.ck-off.ck-file-dialog-button').hide();
+                $('.ck.ck-button.ck-off.ck-dropdown__button').hide();
             })
             .catch(error => {
                 console.error('ErrorBro', error);

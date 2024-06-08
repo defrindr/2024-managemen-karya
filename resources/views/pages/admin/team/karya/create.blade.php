@@ -97,6 +97,9 @@
             .create(document.querySelector('#editor'))
             .then(newEditor => {
                 editor = newEditor;
+
+                $('.ck.ck-button.ck-off.ck-file-dialog-button').hide();
+                $('.ck.ck-button.ck-off.ck-dropdown__button').hide();
             })
             .catch(error => {
                 console.error('ErrorBro', error);
