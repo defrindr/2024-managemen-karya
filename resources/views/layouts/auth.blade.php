@@ -22,9 +22,18 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <style>
+        body {
+            background: #FFF;
+            background-image: url("/img/bg-login.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
+<body class="min-vh-100 d-flex justify-content-center align-items-center">
 
     @yield('main-content')
 
