@@ -97,11 +97,13 @@
                 @foreach ($listKategori as $kategori)
                     <div class="col-md-3">
                         <div class="category">
-                            <img src="{{ $kategori->getIconPath() }}" alt="{{ $kategori->name }}"
-                                class="img img-fluid category-icon">
-                            <span class="category-title">
-                                {{ $kategori->name }}
-                            </span>
+                            <a href="{{ route('karya', ['kategori' => $kategori->id]) }}">
+                                <img src="{{ $kategori->getIconPath() }}" alt="{{ $kategori->name }}"
+                                    class="img img-fluid category-icon">
+                                <span class="category-title">
+                                    {{ $kategori->name }}
+                                </span>
+                            </a>
                         </div>
                     </div>
                 @endforeach
