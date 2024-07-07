@@ -33,6 +33,7 @@ Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
     // data master
     // Route::get('/tool/up', 'ToolController@up')->name('tool.up');
     Route::name('master.')->group(function () {
+        Route::resource('matakuliah', 'MatakuliahController');
         Route::resource('category', 'CategoryController');
         Route::resource('berita', 'BeritaController');
         Route::resource('user', 'UserController')->except(['show']);

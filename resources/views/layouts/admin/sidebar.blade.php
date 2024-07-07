@@ -55,6 +55,12 @@
                 <span>{{ __('Kategori') }}</span>
             </a>
         </li>
+        <li class="nav-item {{ Nav::isRoute('admin.master.matakuliah.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.matakuliah.index') }}">
+                <i class="fas fa-fw fa-database"></i>
+                <span>{{ __('Mata Kuliah') }}</span>
+            </a>
+        </li>
     @endif
     <li class="nav-item {{ Nav::isRoute('admin.master.team.index') }}">
         <a class="nav-link" href="{{ route('admin.master.team.index') }}">
