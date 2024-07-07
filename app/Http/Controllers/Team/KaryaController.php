@@ -8,6 +8,7 @@ use App\Http\Requests\StoreKaryaRequest;
 use App\Http\Requests\UpdateKaryaRequest;
 use App\Models\Category;
 use App\Models\Karya;
+use App\Models\KaryaAsset;
 use App\Models\KaryaKompetisi;
 use App\Models\KaryaProject;
 use App\Models\KaryaTugas;
@@ -46,6 +47,13 @@ class KaryaController extends Controller
 
         DB::beginTransaction();
         try {
+            $response = RequestHelper::uploadImage($request->file('thumbnail'), KaryaAsset::getFolderPath());
+            if (!$response['success']) {
+                session()->flash('error', 'Ikon gagal diunggah');
+
+                return Redirect::back()->withInput();
+            }
+            $payload['thumbnail'] = $response['fileName'];
             $karya = Karya::create($payload);
 
             $payload_detail = array_merge($payload, ['karya_id' => $karya->id]);
@@ -102,6 +110,17 @@ class KaryaController extends Controller
         $payload = $request->validated();
 
         try {
+            if ($request->has('thumbnail')) {
+                $response = RequestHelper::uploadImage($request->file('thumbnail'), KaryaAsset::getFolderPath());
+                if (!$response['success']) {
+                    session()->flash('error', 'Ikon gagal diunggah');
+
+                    return Redirect::back()->withInput();
+                }
+                $payload['thumbnail'] = $response['fileName'];
+            } else {
+                $payload['thumbnail'] = $karya->thumbnail;
+            }
             $karya->update($payload);
             $karya->detail->update($payload);
             session()->flash('success', 'Berhasil mengubah karya');

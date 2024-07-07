@@ -31,7 +31,11 @@ class UpdateKaryaRequest extends FormRequest
 
         $karya = Karya::find($id);
 
-        $rules = [];
+        $rules = [
+            'youtube_url' => 'required',
+            'project_url' => 'required',
+            'thumbnail' => 'nullable',
+        ];
 
         if ($karya->category_id == Category::KARYA_TUGAS) {
             $rules = array_merge($rules, [
@@ -44,6 +48,17 @@ class UpdateKaryaRequest extends FormRequest
             $rules = array_merge($rules, [
                 // 'thumbnail' => 'nullable|file|mimes:jpg,png,gif,jpeg',
                 'judul' => 'required|min:5',
+                'deskripsi' => 'required',
+            ]);
+        } else {
+            $rules = array_merge($rules, [
+                'jenis_kompetisi' => 'required',
+                'tingkat_kompetisi' => 'required',
+                'tempat_kompetisi' => 'required',
+                'tanggal_mulai' => 'required|date',
+                'tanggal_akhir' => 'required|date',
+                'jumlah_peserta' => 'required|numeric',
+                'penghargaan' => 'required',
                 'deskripsi' => 'required',
             ]);
         }

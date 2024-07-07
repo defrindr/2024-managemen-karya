@@ -28,6 +28,29 @@
             <td>:</td>
             <td>{!! $detail->mataKuliah->name !!}</td>
         </tr>
+        @if ($karya->youtube_url != '-')
+            <tr>
+                <td>Youtube</td>
+                <td>:</td>
+                <td>
+                    <a href="{!! $karya->youtube_url !!}" target="_blank">
+                        Kunjungi
+                    </a>
+                </td>
+            </tr>
+        @endif
+
+        @if ($karya->project_url != '-')
+            <tr>
+                <td>Project</td>
+                <td>:</td>
+                <td>
+                    <a href="{!! $karya->project_url !!}" target="_blank">
+                        Kunjungi
+                    </a>
+                </td>
+            </tr>
+        @endif
     </tbody>
 </table>
 <div style="text-align: justify">

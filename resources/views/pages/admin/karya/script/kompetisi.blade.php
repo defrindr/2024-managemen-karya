@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 <script>
     let editor;
     if (document.querySelector('#editor'))
@@ -5,7 +6,7 @@
         .create(document.querySelector('#editor'))
         .then(newEditor => {
             editor = newEditor;
-            editor.data.set(`{!! $karya->deskripsi !!}`);
+            editor.data.set(`{!! $detail ? $detail->deskripsi : '-' !!}`);
 
 
             $('.ck.ck-button.ck-off.ck-file-dialog-button').hide();

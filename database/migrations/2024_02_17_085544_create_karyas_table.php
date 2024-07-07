@@ -17,6 +17,10 @@ return new class extends Migration
             $table->foreignId('team_id')->nullable()->references('id')->on('teams');
             $table->integer('is_personal')->default(0);
             $table->string('judul');
+            // tambahkan lagi
+            $table->string('youtube_url');
+            $table->string('project_url');
+            $table->string('thumbnail');
 
             $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('approved_by')->nullable()->references('id')->on('users');

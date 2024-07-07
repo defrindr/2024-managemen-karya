@@ -20,6 +20,23 @@
                         <td>Judul</td>
                         <td>{{ $karya->judul }}</td>
                     </tr>
+                    <tr>
+                        <td>Youtube</td>
+                        <td>{!! $karya->youtubeAnchor !!}</td>
+                    </tr>
+                    <tr>
+                        <td>Project</td>
+                        <td>{!! $karya->projectAnchor !!}</td>
+                    </tr>
+                    <tr>
+                        <td>Gambar</td>
+                        <td>
+                            <a href="{{ $karya->thumbnailUrl }}" target="_blank">
+                                <img src="{{ $karya->thumbnailUrl }}" alt="" class="img img-fluid"
+                                    style="max-width: 120px">
+                            </a>
+                        </td>
+                    </tr>
                     @if ($karya->is_personal)
                         <tr>
                             <td>Personal</td>

@@ -60,6 +60,13 @@ class KaryaPersonalController extends Controller
 
         DB::beginTransaction();
         try {
+            $response = RequestHelper::uploadImage($request->file('thumbnail'), KaryaAsset::getFolderPath());
+            if (!$response['success']) {
+                session()->flash('error', 'Ikon gagal diunggah');
+
+                return Redirect::back()->withInput();
+            }
+            $payload['thumbnail'] = $response['fileName'];
             $karya = Karya::create($payload);
 
             $payload_detail = array_merge($payload, ['karya_id' => $karya->id]);
@@ -123,6 +130,17 @@ class KaryaPersonalController extends Controller
         $payload = $request->validated();
 
         try {
+            if ($request->has('thumbnail')) {
+                $response = RequestHelper::uploadImage($request->file('thumbnail'), KaryaAsset::getFolderPath());
+                if (!$response['success']) {
+                    session()->flash('error', 'Ikon gagal diunggah');
+
+                    return Redirect::back()->withInput();
+                }
+                $payload['thumbnail'] = $response['fileName'];
+            } else {
+                $payload['thumbnail'] = $karya->thumbnail;
+            }
             $karya->update($payload);
             $detail->update($payload);
 

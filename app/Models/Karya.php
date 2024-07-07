@@ -13,7 +13,10 @@ class Karya extends Model
     protected $fillable = [
         'category_id', 'team_id', 'is_personal',
         // 'is_publish', 
-        'judul', 'created_by', 'approved_by'
+        'judul', 'created_by', 'approved_by',
+        'youtube_url',
+        'project_url',
+        'thumbnail',
     ];
 
     public function category(): BelongsTo
@@ -215,6 +218,33 @@ class Karya extends Model
     {
         $poster = KaryaAsset::where('karya_id', $this->id)->where('tipe', 'poster')->first();
         if ($poster) return $poster->fileUrl;
-        return $this->category->url;
+        return $this->thumbnailUrl;
+    }
+
+    public function getProjectAnchorAttribute()
+    {
+        if ($this->project_url == '-') return '-';
+        return "<a href='{$this->project_url}' target='_blank'>$this->project_url</a>";
+    }
+
+    public function getYoutubeAnchorAttribute()
+    {
+        if ($this->youtube_url == '-') return '-';
+        return "<a href='{$this->youtube_url}' target='_blank'>$this->youtube_url</a>";
+    }
+
+    public static function getFolderPath()
+    {
+        return 'categories/';
+    }
+
+    public function getPath()
+    {
+        return "/storage/" . self::getFolderPath() . $this->thumbnail;
+    }
+
+    public function getThumbnailUrlAttribute()
+    {
+        return asset($this->getPath());
     }
 }

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('tanggal_akhir');
             $table->integer('jumlah_peserta');
             $table->string('penghargaan');
+            
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

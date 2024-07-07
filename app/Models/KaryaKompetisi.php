@@ -20,5 +20,6 @@ class KaryaKompetisi extends Model
         'tanggal_akhir',
         'jumlah_peserta',
         'penghargaan',
+        'deskripsi'
     ];
 }

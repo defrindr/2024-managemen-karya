@@ -26,6 +26,9 @@ class StoreKaryaRequest extends FormRequest
         $rules = [
             'category_id' => 'required',
             'judul' => 'required|min:5',
+            'youtube_url' => 'required',
+            'project_url' => 'required',
+            'thumbnail' => 'required|file',
         ];
 
         if ($categoryId == 3) {
@@ -48,6 +51,7 @@ class StoreKaryaRequest extends FormRequest
                 'tanggal_akhir' => 'required|date',
                 'jumlah_peserta' => 'required|numeric',
                 'penghargaan' => 'required',
+                'deskripsi' => 'required',
             ]);
         }
 

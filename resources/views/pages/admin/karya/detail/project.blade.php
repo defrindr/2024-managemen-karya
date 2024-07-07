@@ -22,6 +22,23 @@
                             <td>{{ $karya->is_personal ? 'Ya' : 'Tidak' }}</td>
                         </tr>
                     @endif
+                    <tr>
+                        <td>Youtube</td>
+                        <td>{!! $karya->youtubeAnchor !!}</td>
+                    </tr>
+                    <tr>
+                        <td>Project</td>
+                        <td>{!! $karya->projectAnchor !!}</td>
+                    </tr>
+                    <tr>
+                        <td>Gambar</td>
+                        <td>
+                            <a href="{{ $karya->thumbnailUrl }}" target="_blank">
+                                <img src="{{ $karya->thumbnailUrl }}" alt="" class="img img-fluid"
+                                    style="max-width: 120px">
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <hr>
