@@ -43,7 +43,7 @@ class CategoryController extends Controller
                 if (! $response['success']) {
                     session()->flash('error', 'Ikon gagal diunggah');
 
-                    return Redirect::route('admin.master.category.create')->withInput();
+                    return Redirect::route('admin.master.category.edit')->withInput();
                 }
                 $payload['icon'] = $response['fileName'];
             } else {
@@ -57,7 +57,7 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             session()->flash('error', 'Gagal menambahkan data!');
 
-            return Redirect::route('admin.master.category.create')->withInput();
+            return Redirect::route('admin.master.category.edit')->withInput();
         }
     }
 

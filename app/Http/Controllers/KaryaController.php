@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Karya;
+use App\Models\MataKuliah;
 use App\Models\Team;
 use App\Models\TeamDetail;
 use App\Models\User;
@@ -26,7 +28,12 @@ class KaryaController extends Controller
         $roleId = $user->role_id;
 
         if ($roleId === User::ROLE_MAHASISWA) {
-            $queryBuilder = $queryBuilder->whereIn('team_id', TeamDetail::where('approve', true)->where('user_id', $userId)->select('team_id'));
+            $queryBuilder = $queryBuilder->where(function ($queryBuilder) use($userId) {
+                $queryBuilder->whereIn('team_id', TeamDetail::where('approve', true)->where('user_id', $userId)->select('team_id'))
+                    ->orWhere(function ($queryBuilder) {
+                        $queryBuilder->where('created_by', auth()->user()->id)->where('is_personal', 1);
+                    });
+            });
         }
 
         $items = $queryBuilder->paginate();
@@ -98,5 +105,11 @@ class KaryaController extends Controller
 
             return Redirect::route('admin.master.karya.index');
         }
+    }
+
+    public function fetchForm(Category $category)
+    {
+        $karya = new Karya();
+        return view($karya->getFormTemplate($category), $karya->getFormTemplateData($category));
     }
 }

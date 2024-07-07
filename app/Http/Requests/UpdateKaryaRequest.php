@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
+use App\Models\Karya;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Route;
 
 class UpdateKaryaRequest extends FormRequest
 {
@@ -21,13 +24,31 @@ class UpdateKaryaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'category_id' => 'required',
-            'judul' => 'required|min:5',
-            'gambar' => 'nullable|file|mimes:jpg,png,gif,jpeg',
-            'deskripsi' => 'required',
-            'link_youtube' => 'nullable|url',
-        ];
+        $id = request()->segment(3);
+        if (Route::is('admin.master.team.karya.update')) {
+            $id = request()->segment(5);
+        }
+
+        $karya = Karya::find($id);
+
+        $rules = [];
+
+        if ($karya->category_id == Category::KARYA_TUGAS) {
+            $rules = array_merge($rules, [
+                // 'thumbnail' => 'nullable|file|mimes:jpg,png,gif,jpeg',
+                'judul' => 'required|min:5',
+                'deskripsi' => 'required',
+                'mata_kuliah_id' => 'required',
+            ]);
+        } else if ($karya->category_id == Category::KARYA_PROJECT) {
+            $rules = array_merge($rules, [
+                // 'thumbnail' => 'nullable|file|mimes:jpg,png,gif,jpeg',
+                'judul' => 'required|min:5',
+                'deskripsi' => 'required',
+            ]);
+        }
+
+        return $rules;
     }
 
     public function attributes()

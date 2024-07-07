@@ -15,4 +15,9 @@ class KaryaTugas extends Model
         "mata_kuliah_id",
         "deskripsi"
     ];
+
+    public function mataKuliah()
+    {
+        return $this->belongsTo(MataKuliah::class);
+    }
 }

@@ -28,34 +28,7 @@
                         </a>
                     </div>
                     <div class="col-md-9 mb-2">
-                        <table class="table table-borderless text-left" style="font-size: .8rem;color:#aaa">
-                            <tbody>
-                                <tr>
-                                    <td>Nama Tim</td>
-                                    <td>:</td>
-                                    <td>{{ $karya->team->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Anggota</td>
-                                    <td>:</td>
-                                    <td>{!! $karya->team->memberText !!}</td>
-                                </tr>
-                                @if ($karya->link_youtube)
-                                    <tr>
-                                        <td>Youtube</td>
-                                        <td>:</td>
-                                        <td>
-                                            <a href="{!! $karya->link_youtube !!}" target="_blank">
-                                                Kunjungi
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                        <div style="text-align: justify">
-                            {!! $karya->deskripsi !!}
-                        </div>
+                        {!! $karya->templateGuest !!}
                     </div>
                 </div>
             </div>

@@ -106,6 +106,19 @@
                                                 class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
+
+                                            @if ($karya->created_by === auth()->user()->id || $team->isCreator())
+                                                <form class="d-inline"
+                                                    action="{{ route('admin.master.team.karya.destroy', compact('team', 'karya')) }}"
+                                                    onsubmit="return confirmDelete()" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" name="submit"
+                                                        class="btn btn-sm btn-danger mb-1 mr-1"><i class="fa fa-trash"
+                                                            aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

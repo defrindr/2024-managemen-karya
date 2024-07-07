@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('karya_asset', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('karya_id')->references('id')->on('karyas');
+            $table->foreignId('karya_id')->references('id')->on('karyas')->onDelete('cascade');
             $table->enum('tipe', ['thumbnail', 'kegiatan', 'poster', 'peserta']);
-            $table->string('file');
-            $table->string('keterangan');
+            $table->string('file')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

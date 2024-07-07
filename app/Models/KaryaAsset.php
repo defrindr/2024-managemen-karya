@@ -9,5 +9,21 @@ class KaryaAsset extends Model
 {
     use HasFactory;
 
-    protected $table = ['karya_id', 'tipe', 'file', 'keterangan'];
+    protected $table = 'karya_asset';
+    protected $fillable = ['karya_id', 'tipe', 'file', 'keterangan'];
+
+    public static function getFolderPath()
+    {
+        return 'categories/';
+    }
+
+    public function getPath()
+    {
+        return "/storage/" . self::getFolderPath() . $this->file;
+    }
+
+    public function getFileUrlAttribute()
+    {
+        return asset($this->getPath());
+    }
 }

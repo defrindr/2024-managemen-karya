@@ -20,7 +20,7 @@ class AppController extends Controller
 
         $listKategori = Category::get();
         $filterKarya = Category::get();
-        $listKarya = Karya::limit(9)->orderBy('id', 'desc')->get();
+        $listKarya = Karya::limit(9)->orderBy('id', 'desc')->whereNotNull('approved_by')->get();
         $listBerita = Berita::orderBy('id', 'desc')->limit(6)->get();
 
         return view('pages.guest.index', compact('appName', 'appBanner', 'listKategori', 'filterKarya', 'listKarya', 'socialMedias', 'listBerita', 'appDescription'));
@@ -34,7 +34,7 @@ class AppController extends Controller
 
         $listKategori = Category::get();
 
-        $qb = Karya::query()->orderBy('id', 'desc');
+        $qb = Karya::query()->whereNotNull('approved_by')->orderBy('id', 'desc');
 
         if ($request->has('kategori')) {
             $qb->where('category_id', $request->kategori);

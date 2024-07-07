@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             CategorySeeder::class,
+            MataKuliahSeeder::class,
             TeamSeeder::class,
             TeamDetailSeeder::class,
             KaryaSeeder::class,

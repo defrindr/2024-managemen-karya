@@ -35,7 +35,7 @@
 
                                         <div class="form-group">
                                             <input type="username" class="form-control form-control-user" name="username"
-                                                placeholder="{{ __('NRP') }}" value="{{ old('username') }}" required
+                                                placeholder="{{ __('NIM') }}" value="{{ old('username') }}" required
                                                 autofocus>
                                         </div>
 

@@ -51,7 +51,7 @@
             }
 
             if (confirm('Apakah anda yakin ingin menjalankan aksi ini ?')) {
-                window.location.href = "{{ route('admin.master.team.karya.create', ['team' => $team, 'category' => 1337]) }}"
+                window.location.href = "{{ route('admin.master.karya-personal.create', 1337) }}"
                     .replace('1337', value)
             }
         });

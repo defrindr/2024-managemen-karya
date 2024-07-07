@@ -62,6 +62,14 @@
             <span>{{ __('Tim Saya') }}</span>
         </a>
     </li>
+    @if (Auth::user()->role_id == \App\Models\User::ROLE_MAHASISWA)
+        <li class="nav-item {{ Nav::isRoute('admin.master.karya-personal.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.karya-personal.index') }}">
+                <i class="fas fa-fw fa-paperclip"></i>
+                <span>{{ __('Karya Personal') }}</span>
+            </a>
+        </li>
+    @endif
 
     <li class="nav-item {{ Nav::isRoute('admin.master.karya.index') }}">
         <a class="nav-link" href="{{ route('admin.master.karya.index') }}">

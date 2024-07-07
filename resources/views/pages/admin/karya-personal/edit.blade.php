@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card card-default">
-                <form action="{{ route('admin.master.team.karya.update', compact('team', 'karya')) }}" class="form"
+                <form action="{{ route('admin.master.karya-personal.update', ['karya_personal' => $karya]) }}" class="form"
                     method="post" enctype="multipart/form-data">
                     <div class="card-header">
                         <a href="{{ url()->previous() }}" class="btn btn-default">
@@ -38,29 +38,5 @@
     </style>
 @endsection
 @section('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
-    <script>
-        let editor;
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(newEditor => {
-                editor = newEditor;
-                editor.data.set(`{!! $karya->deskripsi !!}`);
-
-
-                $('.ck.ck-button.ck-off.ck-file-dialog-button').hide();
-                $('.ck.ck-button.ck-off.ck-dropdown__button').hide();
-            })
-            .catch(error => {
-                console.error('ErrorBro', error);
-            });
-
-
-        // Assuming there is a <button id="submit">Submit</button> in your application.
-        document.querySelector('#submit').addEventListener('click', () => {
-            $('#input__deskripsi').val(editor.getData());
-
-            return confirm('Apakah anda yakin ingin menjalankan aksi ini ?')
-        });
-    </script>
+    {!! $templateScript !!}
 @endsection

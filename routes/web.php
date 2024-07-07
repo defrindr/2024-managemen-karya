@@ -48,10 +48,15 @@ Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
         Route::post('/team/{team}/member/create', 'TeamController@storeMember')->name('team.member.store');
         Route::delete('/team/{team}/member/{member}', 'TeamController@destroyMember')->name('team.member.destroy');
 
-        Route::resource('team.karya', 'Team\KaryaController');
-        Route::resource('karya', 'KaryaController')->only(['index', 'show']);
+        Route::get('karya-fetch-form/{category}', 'KaryaController@fetchForm')->name('karya.fetch-form');
+        Route::get('karya-personal/create/{category?}', 'KaryaPersonalController@create')->name('karya-personal.create');
+        Route::resource('karya-personal', 'KaryaPersonalController')->except('create');
+        Route::get('team/{team}/karya/create/{category?}', 'Team\KaryaController@create')->name('team.karya.create');
+        Route::resource('team.karya', 'Team\KaryaController')->except('create');
+        Route::resource('karya.asset', 'KaryaAssetController')->except(['index', 'show']);
         Route::post('/karya/{karya}/approve', 'KaryaController@approve')->name('karya.approve');
         Route::post('/karya/{karya}/reject', 'KaryaController@reject')->name('karya.reject');
+        Route::resource('karya', 'KaryaController')->only(['index', 'show']);
 
         Route::get('/setting', 'SettingController@edit')->name('setting.edit');
         Route::put('/setting', 'SettingController@update')->name('setting.update');

@@ -21,13 +21,37 @@ class StoreKaryaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $categoryId = request()->get('category_id');
+
+        $rules = [
             'category_id' => 'required',
             'judul' => 'required|min:5',
-            'gambar' => 'required|file|mimes:jpg,png,gif,jpeg',
-            'deskripsi' => 'required',
-            'link_youtube' => 'nullable|url',
         ];
+
+        if ($categoryId == 3) {
+            $rules = array_merge($rules, [
+                'thumbnail' => 'required',
+                'deskripsi' => 'required',
+                'mata_kuliah_id' => 'required',
+            ]);
+        } else if ($categoryId == 2) {
+            $rules = array_merge($rules, [
+                'thumbnail' => 'required',
+                'deskripsi' => 'required',
+            ]);
+        } else {
+            $rules = array_merge($rules, [
+                'jenis_kompetisi' => 'required',
+                'tingkat_kompetisi' => 'required',
+                'tempat_kompetisi' => 'required',
+                'tanggal_mulai' => 'required|date',
+                'tanggal_akhir' => 'required|date',
+                'jumlah_peserta' => 'required|numeric',
+                'penghargaan' => 'required',
+            ]);
+        }
+
+        return $rules;
     }
 
     public function attributes()

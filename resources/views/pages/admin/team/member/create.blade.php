@@ -32,7 +32,7 @@
                         <div class="col-md-10 mb-1">
                             <div class="form-group">
                                 <input id="input__nrp" type="text" class="form-control" name="nrp"
-                                    placeholder="Cari berdasarkan NRP">
+                                    placeholder="Cari berdasarkan Email">
                             </div>
                         </div>
                         <div class="col-md-2 mb-3">
@@ -94,7 +94,7 @@
                         <td>${result.data.name}</td>
                     </tr>
                     <tr>
-                        <td>NRP</td>
+                        <td>NIM</td>
                         <td>:</td>
                         <td>${result.data.username}</td>
                     </tr>
@@ -105,7 +105,7 @@
         $('#search-pengguna').on('click', function() {
             let nrp = $('#input__nrp').val();
 
-            if (!nrp) return alert('NRP tidak boleh kosong');
+            if (!nrp) return alert('NIM tidak boleh kosong');
 
             CariPenggunaBerdasarkanNRP(nrp);
         })

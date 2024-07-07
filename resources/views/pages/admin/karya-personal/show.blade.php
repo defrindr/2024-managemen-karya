@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __($title) }}</h1>
 
-    <a href="{{ route('admin.master.karya.index') }}" class="btn btn-default mb-2">
+    <a href="{{ route('admin.master.karya-personal.index') }}" class="btn btn-default mb-2">
         Kembali
     </a>
 

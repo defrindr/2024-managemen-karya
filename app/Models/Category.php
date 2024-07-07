@@ -11,6 +11,9 @@ class Category extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const KARYA_KOMPETISI = 1;
+    const KARYA_PROJECT = 2;
+    const KARYA_TUGAS = 3;
     protected $fillable = ['name', 'icon'];
 
     public function getIconFolderPath()

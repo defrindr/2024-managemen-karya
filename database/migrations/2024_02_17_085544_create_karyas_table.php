@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('karyas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->references('id')->on('categories');
-            $table->foreignId('team_id')->references('id')->on('teams');
+            $table->foreignId('team_id')->nullable()->references('id')->on('teams');
             $table->integer('is_personal')->default(0);
-            $table->integer('is_publish')->default(0);
+            // $table->integer('is_publish')->default(0);
             $table->string('judul');
 
             $table->foreignId('created_by')->references('id')->on('users');
