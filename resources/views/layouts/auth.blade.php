@@ -32,7 +32,8 @@
         } */
 
         .bg-login-image {
-            background-size: contain
+            background-size: contain;
+background-repeat: no-repeat;
         }
     </style>
 </head>
