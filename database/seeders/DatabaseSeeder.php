@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             MataKuliahSeeder::class,
-            TeamSeeder::class,
-            TeamDetailSeeder::class,
-            KaryaSeeder::class,
+            //TeamSeeder::class,
+            //TeamDetailSeeder::class,
+            //KaryaSeeder::class,
             BeritaSeeder::class,
         ]);
     }
