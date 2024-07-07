@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="input__name">Nama Kategori</label>
                             <input id="input__name" type="text" class="form-control" name="name"
-                                value="{{ old('name') ?? $category->name }}">
+                                value="{{ old('name') ?? $category->name }}" readonly>
                             @error('name')
                                 <div class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>

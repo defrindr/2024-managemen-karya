@@ -8,9 +8,6 @@
         <div class="col-md-12">
             <div class="card card-default">
                 <div class="card-header">
-                    <a href="{{ route('admin.master.category.create') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> {{ __('Tambah data') }}
-                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -44,15 +41,6 @@
                                                 href="{{ route('admin.master.category.edit', $category->id) }}">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                             </a>
-                                            <form class="d-inline"
-                                                action="{{ route('admin.master.category.destroy', $category) }}"
-                                                onsubmit="return confirmDelete()" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" name="submit"
-                                                    class="btn btn-sm btn-danger mb-1 mr-1"><i class="fa fa-trash"
-                                                        aria-hidden="true"></i>
-                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\RequestHelper;
-use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Redirect;
@@ -19,43 +18,6 @@ class CategoryController extends Controller
         $items = Category::orderBy('id', 'desc')->paginate();
 
         return view('pages.admin.category.index', compact('title', 'items'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $title = 'Tambah Kategori Karya';
-
-        return view('pages.admin.category.create', compact('title'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCategoryRequest $request)
-    {
-        try {
-            $payload = $request->validated();
-
-            $response = RequestHelper::uploadImage($request->file('icon'), 'categories');
-            if (! $response['success']) {
-                session()->flash('error', 'Ikon gagal diunggah');
-
-                return Redirect::route('admin.master.category.create')->withInput();
-            }
-            $payload['icon'] = $response['fileName'];
-
-            Category::create($payload);
-            session()->flash('success', 'Berhasil menambahkan kategori karya!');
-
-            return Redirect::route('admin.master.category.index');
-        } catch (\Throwable $th) {
-            session()->flash('error', 'Gagal menambahkan data!');
-
-            return Redirect::route('admin.master.category.create')->withInput();
-        }
     }
 
     /**

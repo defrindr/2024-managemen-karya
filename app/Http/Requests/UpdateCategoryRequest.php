@@ -24,14 +24,13 @@ class UpdateCategoryRequest extends FormRequest
         $categoryId = request()->segment(3);
 
         return [
-            'gambar' => 'nullable|file|mimes:jpg,png,gif,jpeg',
-            'name' => 'required|unique:categories,name,'.$categoryId,
+            'gambar' => 'nullable|file|mimes:jpg,png,gif,jpeg'
         ];
     }
 
     public function attributes()
     {
-        return ['icon' => 'Ikon', 'name' => 'Nama'];
+        return ['icon' => 'Ikon'];
     }
 
     public function messages()
