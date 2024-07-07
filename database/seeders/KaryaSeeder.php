@@ -12,6 +12,6 @@ class KaryaSeeder extends Seeder
      */
     public function run(): void
     {
-        Karya::factory(100)->create();
+        // Karya::factory(100)->create();
     }
 }

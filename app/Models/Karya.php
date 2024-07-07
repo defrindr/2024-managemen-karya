@@ -10,7 +10,7 @@ class Karya extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['judul', 'gambar', 'deskripsi', 'link_youtube', 'category_id', 'team_id', 'created_by', 'approved_by'];
+    protected $fillable = ['category_id', 'team_id', 'is_personal', 'is_publish', 'judul', 'created_by', 'approved_by'];
 
     public function category(): BelongsTo
     {
@@ -35,25 +35,5 @@ class Karya extends Model
     public function getStatusAttribute()
     {
         return $this->approved_by ? 'Disetujui' : 'Pending';
-    }
-
-    public function getSummaryAttribute()
-    {
-        return strlen($this->deskripsi) > 100 ? substr($this->deskripsi, 0, 100) . '...' : $this->deskripsi;
-    }
-
-    public function getImageFolderPath()
-    {
-        return 'storage/karya/';
-    }
-
-    public function getImagePath()
-    {
-        return $this->getImageFolderPath() . str_replace(" ", "%20", $this->gambar);
-    }
-
-    public function getImageUrlAttribute()
-    {
-        return asset($this->getImagePath());
     }
 }

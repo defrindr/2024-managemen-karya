@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('team_id')->references('id')->on('teams');
+            $table->integer('is_personal')->default(0);
+            $table->integer('is_publish')->default(0);
             $table->string('judul');
-            $table->string('gambar');
-            $table->string('deskripsi');
-            $table->string('link_youtube')->nullable();
 
             $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('approved_by')->nullable()->references('id')->on('users');

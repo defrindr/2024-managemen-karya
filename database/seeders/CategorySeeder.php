@@ -12,8 +12,8 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create(['icon' => '1.png', 'name' => 'Teknologi Informasi']);
-        Category::create(['icon' => '1.png', 'name' => 'Pangan']);
-        Category::create(['icon' => '1.png', 'name' => 'Otomotif']);
+        Category::create(['id' => 1, 'icon' => '1.png', 'name' => 'Kompetisi']);
+        Category::create(['id' => 2, 'icon' => '1.png', 'name' => 'Project']);
+        Category::create(['id' => 3, 'icon' => '1.png', 'name' => 'Tugas Perkuliahan']);
     }
 }
