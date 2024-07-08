@@ -33,7 +33,7 @@
 
         .bg-login-image {
             background-size: contain;
-background-repeat: no-repeat;
+            background-repeat: no-repeat;
         }
     </style>
 </head>

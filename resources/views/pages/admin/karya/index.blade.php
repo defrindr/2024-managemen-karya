@@ -20,6 +20,7 @@
                                     <th>#</th>
                                     <th>Judul</th>
                                     <th>Kontributor</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -36,6 +37,7 @@
                                         </td>
                                         <td>{{ $karya->judul }}</td>
                                         <td>{{ $karya->Kontributor }}</td>
+                                        <td>{{ $karya->status }}</td>
                                         <td>
                                             <a href="{{ route('admin.master.karya.show', compact('karya')) }}"
                                                 class="btn btn-sm btn-info mb-1 mr-1">

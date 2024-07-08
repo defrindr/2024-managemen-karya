@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('jumlah_peserta');
             $table->string('penghargaan');
             
-            $table->text('deskripsi');
+            $table->longText('deskripsi');
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Judul</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                             {{ ($items->currentpage() - 1) * $items->perpage() + $loop->index + 1 }}
                                         </td>
                                         <td>{{ $karya->judul }}</td>
+                                        <td>{{ $karya->status }}</td>
                                         <td>
                                             <a href="{{ route('admin.master.karya-personal.edit', ['karya_personal' => $karya]) }}"
                                                 class="btn btn-sm btn-warning mb-1 mr-1">
