@@ -26,6 +26,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required',
             'role_id' => 'required',
             'password' => 'required|min:5',
+            'status' => 'nullable'
         ];
     }
 

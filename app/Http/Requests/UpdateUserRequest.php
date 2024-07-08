@@ -26,6 +26,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required',
             'role_id' => 'required',
             'password' => 'nullable|min:5',
+            'status' => 'nullable'
         ];
     }
 
