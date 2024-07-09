@@ -171,7 +171,7 @@
             <div class="section-title text-left" style="display: flex;justify-content:space-between">
                 <h3 style="display:inline-block">Berita <span>Terbaru</span></h3>
                 <div style="vertical-align: middle;display: flex;flex-direction: column-reverse;">
-                    <a href="/app/berita" class="btn btn-primary">Lebih Banyak</a>
+                    <a href="{{ route('berita') }}" class="btn btn-primary">Lebih Banyak</a>
                 </div>
             </div>
             <div class="row">
