@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUserRequest extends FormRequest
@@ -21,13 +22,19 @@ class StoreUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $payload = [
             'username' => 'required|min:5',
             'name' => 'required',
             'role_id' => 'required',
             'password' => 'required|min:5',
             'status' => 'nullable'
         ];
+
+        if (request()->has('role_id') && request()->get('role_id') == User::ROLE_MAHASISWA) {
+            $payload['username'] = 'numeric|min:10';
+        }
+
+        return $payload;
     }
 
     public function messages()
