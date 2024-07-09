@@ -29,7 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Username</th>
+                                    <th>Username / NIM</th>
                                     <th>Nama</th>
                                     <th>Hak Akses</th>
                                     <th>Status</th>

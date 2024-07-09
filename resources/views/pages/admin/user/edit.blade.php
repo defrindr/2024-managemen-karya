@@ -28,7 +28,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="input__username">Username</label>
+                            <label for="input__username">Username / NIM</label>
                             <input id="input__username" type="text" class="form-control" name="username"
                                 value="{{ old('username') ?? $user->username }}">
                             @error('username')

@@ -32,7 +32,7 @@
                         <div class="col-md-10 mb-1">
                             <div class="form-group">
                                 <input id="input__nrp" type="text" class="form-control" name="nrp"
-                                    placeholder="Cari berdasarkan Email">
+                                    placeholder="Cari berdasarkan NIM">
                             </div>
                         </div>
                         <div class="col-md-2 mb-3">
