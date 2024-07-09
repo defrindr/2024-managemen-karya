@@ -28,7 +28,7 @@ class RegisterController extends Controller
         $payload['role_id'] = User::ROLE_MAHASISWA;
 
         if ($user = User::create($payload)) {
-            auth()->login($user);
+            // auth()->login($user);
             return Redirect::route('admin.home');
         }
 

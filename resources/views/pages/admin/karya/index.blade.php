@@ -43,7 +43,7 @@
                                                 class="btn btn-sm btn-info mb-1 mr-1">
                                                 <i class="fa fa-eye"></i>
                                             </a>
-                                            @if (Auth::user()->id != \App\Models\User::ROLE_MAHASISWA)
+                                            @if (Auth::user()->role_id != \App\Models\User::ROLE_MAHASISWA)
                                                 @if (!$karya->approved_by)
                                                     <form class="d-inline"
                                                         action="{{ route('admin.master.karya.approve', $karya) }}"
