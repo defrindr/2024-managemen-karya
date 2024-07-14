@@ -18,6 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Kode</th>
                                     <th>Nama</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -33,6 +34,7 @@
                                         <td>
                                             {{ ($items->currentpage() - 1) * $items->perpage() + $loop->index + 1 }}
                                         </td>
+                                        <td>{{ $matakuliah->kode }}</td>
                                         <td>{{ $matakuliah->name }}</td>
                                         <td>
                                             <a class=" btn btn-sm btn-warning mb-1 mr-1"

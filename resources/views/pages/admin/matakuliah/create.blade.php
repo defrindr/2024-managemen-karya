@@ -18,6 +18,16 @@
                         @csrf
                         @method('POST')
                         <div class="form-group">
+                            <label for="input__kode">Kode Kategori</label>
+                            <input id="input__kode" type="text" class="form-control" name="kode"
+                                value="{{ old('kode') }}">
+                            @error('kode')
+                                <div class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="input__name">Nama Mata Kuliah</label>
                             <input id="input__name" type="text" class="form-control" name="name"
                                 value="{{ old('name') }}">

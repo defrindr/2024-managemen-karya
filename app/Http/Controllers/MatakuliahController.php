@@ -35,18 +35,19 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
+        $payload = $request->validate([
+            'name' => 'required',
+            'kode' => 'required|unique:mata_kuliah,kode'
+        ]);
+
         try {
-            $payload = $request->validate([
-                'name' => 'required'
-            ]);
             MataKuliah::create($payload);
             session()->flash('success', 'Berhasil mengubah Matakuliah!');
 
             return Redirect::route('admin.master.matakuliah.index');
         } catch (\Throwable $th) {
             session()->flash('error', 'Gagal menambahkan data!');
-
-            return Redirect::route('admin.master.matakuliah.edit')->withInput();
+            return Redirect::route('admin.master.matakuliah.create')->withInput();
         }
     }
 
@@ -65,10 +66,11 @@ class MatakuliahController extends Controller
      */
     public function update(Request $request, MataKuliah $matakuliah)
     {
+        $payload = $request->validate([
+            'name' => 'required',
+            'kode' => 'required'
+        ]);
         try {
-            $payload = $request->validate([
-                'name' => 'required'
-            ]);
             $matakuliah->update($payload);
             session()->flash('success', 'Berhasil mengubah Matakuliah!');
 
@@ -76,7 +78,7 @@ class MatakuliahController extends Controller
         } catch (\Throwable $th) {
             session()->flash('error', 'Gagal menambahkan data!');
 
-            return Redirect::route('admin.master.matakuliah.edit')->withInput();
+            return Redirect::route('admin.master.matakuliah.edit', $matakuliah)->withInput();
         }
     }
 

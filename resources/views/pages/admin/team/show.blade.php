@@ -83,6 +83,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Judul</th>
+                                    <th>Kategori</th>
                                     <th>Penginput</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -95,6 +96,7 @@
                                             {{ ($listKaryaTim->currentpage() - 1) * $listKaryaTim->perpage() + $loop->index + 1 }}
                                         </td>
                                         <td>{{ $karya->judul }}</td>
+                                        <td>{{ $karya->category->name }}</td>
                                         <td>{{ $karya->createdBy->name }}</td>
                                         <td>{{ $karya->status }}</td>
                                         <td>

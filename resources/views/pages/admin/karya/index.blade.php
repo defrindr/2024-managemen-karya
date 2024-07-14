@@ -19,6 +19,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Judul</th>
+                                    <th>Kategori</th>
                                     <th>Kontributor</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -36,6 +37,7 @@
                                             {{ ($items->currentpage() - 1) * $items->perpage() + $loop->index + 1 }}
                                         </td>
                                         <td>{{ $karya->judul }}</td>
+                                        <td>{{ $karya->category->name }}</td>
                                         <td>{{ $karya->Kontributor }}</td>
                                         <td>{{ $karya->status }}</td>
                                         <td>
