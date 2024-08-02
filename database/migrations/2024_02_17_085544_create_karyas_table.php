@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('project_url');
             $table->string('thumbnail');
 
+            $table->integer('views')->default(0);
+
             $table->foreignId('created_by')->references('id')->on('users');
             $table->foreignId('approved_by')->nullable()->references('id')->on('users');
             $table->timestamps();

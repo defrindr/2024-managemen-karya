@@ -17,6 +17,7 @@ class Karya extends Model
         'youtube_url',
         'project_url',
         'thumbnail',
+        'views'
     ];
 
     public function category(): BelongsTo

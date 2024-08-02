@@ -27,6 +27,15 @@
             <div id="content">
 
                 <div class="row">
+                    <select name="" id="filter" class="form-control">
+                        <option value="">-- Default --</option>
+                        <option value="terpopuler">Terpopuler</option>
+                        <option value="az">A - Z</option>
+                        <option value="terlama">Terlama</option>
+                    </select>
+                </div>
+
+                <div class="row">
                     @foreach ($listKarya as $item)
                         <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                             <a href="{{ route('karya.detail', $item) }}">
@@ -37,6 +46,9 @@
                                     <div class="box-info">
                                         <span class="title">{{ $item->judul }}</span>
                                         <span class="category">{{ $item->category->name }}</span>
+                                        <span class="category">
+                                            {{ $item->views }} Views
+                                        </span>
                                     </div>
                                 </div>
                             </a>
@@ -47,4 +59,17 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script>
+        document.querySelector('#filter').addEventListener('change', (event) => {
+            let queryString = window.location.search.substring(1);
+            const urlParams = new URLSearchParams(queryString);
+
+            urlParams.set("filter", event.target.value);
+
+            window.location.href = location.protocol + '//' + location.host + location.pathname +"?"+ urlParams.toString()
+        })
+    </script>
 @endsection

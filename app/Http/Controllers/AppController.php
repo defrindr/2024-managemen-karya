@@ -40,6 +40,18 @@ class AppController extends Controller
             $qb->where('category_id', $request->kategori);
         }
 
+
+        if ($request->has('filter')) {
+
+            if ($request->filter === "terpopuler") {
+                $qb->orderBy('views', 'desc');
+            } else  if ($request->filter === "az") {
+                $qb->orderBy('name', 'asc');
+            } else  if ($request->filter === "terlama") {
+                $qb->orderBy('created_at', 'asc');
+            }
+        }
+
         $listKarya = $qb->paginate();
 
         return view('pages.guest.karya', compact('appName', 'socialMedias', 'listKategori', 'listKarya'));
@@ -50,6 +62,8 @@ class AppController extends Controller
         $setting = Setting::first();
         $appName = $setting->judul ?? config('app.name');
         $socialMedias = $setting->socialMedias;
+
+        $karya->update(['views' => $karya->views + 1]);
 
         return view('pages.guest.karya-show', compact('appName', 'socialMedias', 'karya'));
     }
