@@ -11,9 +11,13 @@ class Karya extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'team_id', 'is_personal',
+        'category_id',
+        'team_id',
+        'is_personal',
         // 'is_publish', 
-        'judul', 'created_by', 'approved_by',
+        'judul',
+        'created_by',
+        'approved_by',
         'youtube_url',
         'project_url',
         'thumbnail',
@@ -176,7 +180,9 @@ class Karya extends Model
             $listMatakuliah = MataKuliah::get();
             return compact('detail', 'listMatakuliah', 'karya');
         } else {
-            return compact('karya', 'detail');
+            $tingkatKompetisi = TingkatKompetisi::all();
+            $jenisKompetisi = JenisKompetisi::all();
+            return compact('karya', 'detail', 'tingkatKompetisi', 'jenisKompetisi');
         }
     }
 

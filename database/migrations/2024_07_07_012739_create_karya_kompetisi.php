@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('karya_kompetisi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('karya_id')->references('id')->on('karyas')->onDelete('cascade');
-            $table->string('jenis_kompetisi');
-            $table->string('tingkat_kompetisi');
+            $table->foreignId('jenis_kompetisi')->references('id')->on('jenis_kompetisi')->onDelete('cascade');
+            $table->foreignId('tingkat_kompetisi')->references('id')->on('tingkat_kompetisi')->onDelete('cascade');
             $table->string('tempat_kompetisi');
             $table->date('tanggal_mulai');
             $table->date('tanggal_akhir');
             $table->integer('jumlah_peserta');
             $table->string('penghargaan');
-            
+
             $table->longText('deskripsi');
             $table->timestamps();
         });

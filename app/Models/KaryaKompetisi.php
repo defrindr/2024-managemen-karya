@@ -22,4 +22,14 @@ class KaryaKompetisi extends Model
         'penghargaan',
         'deskripsi'
     ];
+
+    public function jenisKompetisi()
+    {
+        return $this->belongsTo(JenisKompetisi::class, 'jenis_kompetisi');
+    }
+
+    public function tingkatKompetisi()
+    {
+        return $this->belongsTo(TingkatKompetisi::class, 'tingkat_kompetisi');
+    }
 }

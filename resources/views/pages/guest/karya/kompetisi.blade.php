@@ -26,7 +26,7 @@
         <tr>
             <td>Jenis Kompetisi</td>
             <td>:</td>
-            <td>{{ $detail->jenis_kompetisi }}</td>
+            <td>{{ $detail->jenisKompetisi->name }}</td>
         </tr>
         <tr>
             <td>Tempat Kompetisi</td>

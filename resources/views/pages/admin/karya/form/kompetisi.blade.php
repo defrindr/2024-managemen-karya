@@ -14,8 +14,13 @@
 
         <div class="form-group">
             <label for="input__jenis_kompetisi">Jenis Kompetisi</label>
-            <input name="jenis_kompetisi" id="input__jenis_kompetisi" class="form-control"
-                value="{{ old('jenis_kompetisi') ?? ($detail ? $detail->jenis_kompetisi : '') }}" />
+            <select name="jenis_kompetisi" id="input__jenis_kompetisi" class="form-control">
+                <option value="">-- Pilih Jenis --</option>
+                @foreach ($jenisKompetisi as $item)
+                    <option value="{{ $item->id }}" @if (old('jenis_kompetisi') ?? ($detail ? $detail->jenis_kompetisi : '') == $item->id) selected @endif>
+                        {{ $item->name }}</option>
+                @endforeach
+            </select>
             @error('jenis_kompetisi')
                 <div class="invalid-feedback d-block" role="alert">
                     <strong>{{ $message }}</strong>
@@ -27,8 +32,13 @@
 
         <div class="form-group">
             <label for="input__tingkat_kompetisi">Tingkat Kompetisi</label>
-            <input name="tingkat_kompetisi" id="input__tingkat_kompetisi" class="form-control"
-                value="{{ old('tingkat_kompetisi') ?? ($detail ? $detail->tingkat_kompetisi : '') }}" />
+            <select name="tingkat_kompetisi" id="input__tingkat_kompetisi" class="form-control">
+                <option value="">-- Pilih Jenis --</option>
+                @foreach ($tingkatKompetisi as $item)
+                    <option value="{{ $item->id }}" @if (old('tingkat_kompetisi') ?? ($detail ? $detail->tingkat_kompetisi : '') == $item->id) selected @endif>
+                        {{ $item->name }}</option>
+                @endforeach
+            </select>
             @error('tingkat_kompetisi')
                 <div class="invalid-feedback d-block" role="alert">
                     <strong>{{ $message }}</strong>
