@@ -36,6 +36,9 @@ Route::name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
         Route::resource('matakuliah', 'MatakuliahController');
         Route::resource('category', 'CategoryController');
         Route::resource('berita', 'BeritaController');
+        Route::resource('tingkat-kompetisi', 'TingkatKompetisiController')->except(['show'])->parameters(['tingkat-kompetisi' => 'item']);
+        Route::resource('jenis-kompetisi', 'JenisKompetisiController')->except(['show'])->parameters(['jenis-kompetisi' => 'item']);
+        Route::resource('berita', 'BeritaController');
         Route::resource('user', 'UserController')->except(['show']);
 
         Route::resource('team', 'TeamController');

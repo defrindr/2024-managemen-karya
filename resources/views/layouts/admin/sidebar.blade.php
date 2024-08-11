@@ -47,6 +47,18 @@
                 <span>{{ __('Pengguna') }}</span>
             </a>
         </li>
+        <li class="nav-item {{ Nav::isRoute('admin.master.jenis-kompetisi.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.jenis-kompetisi.index') }}">
+                <i class="fas fa-fw fa-list"></i>
+                <span>{{ __('Jenis Kompetisi') }}</span>
+            </a>
+        </li>
+        <li class="nav-item {{ Nav::isRoute('admin.master.tingkat-kompetisi.index') }}">
+            <a class="nav-link" href="{{ route('admin.master.tingkat-kompetisi.index') }}">
+                <i class="fas fa-fw fa-list"></i>
+                <span>{{ __('Tingkat Kompetisi') }}</span>
+            </a>
+        </li>
     @endif
     @if (Auth::user()->role_id != \App\Models\User::ROLE_MAHASISWA)
         <li class="nav-item {{ Nav::isRoute('admin.master.category.index') }}">
